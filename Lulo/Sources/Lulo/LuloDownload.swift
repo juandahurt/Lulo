@@ -9,6 +9,7 @@ import Foundation
 
 
 public class LuloDownload {
+    /// The actual task.
     let task: URLSessionDownloadTask
     
     init(task: URLSessionDownloadTask) {

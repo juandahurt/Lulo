@@ -28,12 +28,23 @@ class LuloDownloader: NSObject {
     }
 }
 
-
+// MARK: - URLSessionDownloadDelegate
 extension LuloDownloader: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        delegate?.didFinish()
         if let data = try? Data(contentsOf: location) {
             delegate?.downloader(self, didFinishDownloadingData: data)
+        } else {
+            // TODO: check if its possible that the bytes can't be "decoded" from the downloaded file
+            // TODO: call didFinishWithError (?)
+        }
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        // There's something funny about the `NSURLSessionDownloadDelegate`: if the download has
+        // complete, the `didFinishDownloadingTo` and `didCompleteWithError` methods will be called both xd.
+        // So, that's why I call the `LuloDownloaderDelegate` `didFinishWithError` method in here...
+        if let error {
+            delegate?.downloader(self, didFinishWithError: error)
         }
     }
     

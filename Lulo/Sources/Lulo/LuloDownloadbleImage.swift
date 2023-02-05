@@ -14,7 +14,7 @@ public enum LuloImagePlaceholder: Equatable {
 }
 
 struct LuloDownloadContext {
-    var onComplete: (() -> Void)?
+    var onComplete: ((Error?) -> Void)?
     var container: UIImageView?
     var placeholder: LuloImagePlaceholder?
 }
@@ -29,10 +29,10 @@ public class LuloDownloadbleImage {
         self.url = url
     }
     
-    /// Sets the  handler .
+    /// Sets the  on-complete handler.
     /// - Parameter handler: Function that will be called when the download finishes.
     /// - Returns: The current downloadble image instace.
-    public func onComplete(_ handler: @escaping () -> Void) -> LuloDownloadbleImage {
+    public func onComplete(_ handler: @escaping (Error?) -> Void) -> LuloDownloadbleImage {
         context.onComplete = handler
         return self
     }
