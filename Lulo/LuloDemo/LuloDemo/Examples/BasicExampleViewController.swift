@@ -1,16 +1,24 @@
 //
-//  ViewController.swift
+//  BasicExampleViewController.swift
 //  LuloDemo
 //
-//  Created by Juan Hurtado on 28/01/23.
+//  Created by Juan Hurtado on 5/02/23.
 //
 
 import UIKit
 import Lulo
 
-class ViewController: UIViewController {
+class BasicExampleViewController: UIViewController {
     var downloadbleImage: LuloDownloadbleImage?
     var imageView: UIImageView?
+    
+    init() {
+        super.init(nibName: String(describing: Self.self), bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,4 +60,5 @@ class ViewController: UIViewController {
     func onTap(_ sender: UIButton) {
         downloadbleImage?.download()
     }
+
 }
