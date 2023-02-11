@@ -25,6 +25,14 @@ protocol LuloDownloaderDelegate: AnyObject {
     ///   - downloader: The downloader object that is calling this method.
     ///   - data: The downloaded data.
     func downloader(_ downloader: LuloDownloader, didFinishDownloadingData data: Data)
+    
+    /// Notifies the delegate the download progress.
+    /// - Parameters:
+    ///   - download: The current download.
+    ///   - bytesDownloaded: The amount of bytes just downloaded.
+    ///   - totalBytesDownloaded: The total amount of bytes downlaoed.
+    ///   - totalBytesExpectedToDownload: The total amount of bytes expeceted to be downloaded.
+    func downloader(_ download: LuloDownloader, didDownloadBytes bytesDownloaded: Int64, totalBytesDownloaded: Int64, totalBytesExpectedToDownload: Int64)
 }
 
 
@@ -57,7 +65,10 @@ class LuloDefaultDownloaderDelegate: LuloDownloaderDelegate {
     }
     
     func willStartDownloading(_ downloader: LuloDownloader) {
-        guard let placeholder = context.placeholder else { return }
+        guard let placeholder = context.placeholder else {
+            context.container?.image = nil
+            return
+        }
         guard let container = context.container else { return }
         switch placeholder {
         case .image(let image):
@@ -69,6 +80,18 @@ class LuloDefaultDownloaderDelegate: LuloDownloaderDelegate {
             indicator.startAnimating()
             container.addSubview(indicator)
             indicator.center = container.center
+        }
+    }
+    
+    func downloader(_ download: LuloDownloader, didDownloadBytes bytesDownloaded: Int64, totalBytesDownloaded: Int64, totalBytesExpectedToDownload: Int64) {
+        // TODO: see if I actually need the the bytesDownloaded variable
+//        print("bytes downloaded: \(bytesDownloaded)")
+//        print("total bytes downloaded: \(totalBytesDownloaded)")
+//        print("total bytesexpected to download: \(totalBytesExpectedToDownload)")
+        let percentage = Double(totalBytesDownloaded) / Double(totalBytesExpectedToDownload)
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            self.context.onProgress?(percentage)
         }
     }
 }

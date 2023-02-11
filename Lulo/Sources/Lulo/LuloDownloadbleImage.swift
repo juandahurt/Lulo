@@ -14,6 +14,7 @@ public enum LuloImagePlaceholder: Equatable {
 }
 
 struct LuloDownloadContext {
+    var onProgress: ((Double) -> Void)?
     var onComplete: ((Error?) -> Void)?
     var container: UIImageView?
     var placeholder: LuloImagePlaceholder?
@@ -34,6 +35,14 @@ public class LuloDownloadbleImage {
     /// - Returns: The current downloadble image instace.
     public func onComplete(_ handler: @escaping (Error?) -> Void) -> LuloDownloadbleImage {
         context.onComplete = handler
+        return self
+    }
+    
+    /// Sets the on-progress handler.
+    /// - Parameter handler: Function that will be called to notify the download progress. Note that it receives a Double as paramter indicating the downloaded percentage.
+    /// - Returns: The current downloadble image instace.
+    public func onProgress(_ handler: @escaping (Double) -> Void) -> LuloDownloadbleImage {
+        context.onProgress = handler
         return self
     }
     

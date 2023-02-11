@@ -27,20 +27,34 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ExampleOptionTableViewCell
-        cell.title = "Basic Example"
+        let title: String
+        if indexPath.row == 0 {
+            title = "Basic Example"
+        } else {
+            title = "On progess example"
+        }
+        cell.title = title
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        2
     }
 }
 
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = BasicExampleViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        switch indexPath.row {
+        case 0:
+            let vc = BasicExampleViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = ProgresExampleViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
