@@ -51,4 +51,8 @@ extension LuloDownloader: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, didCreateTask task: URLSessionTask) {
         delegate?.willStartDownloading(self)
     }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        delegate?.downloader(self, didDownloadBytes: bytesWritten, totalBytesDownloaded: totalBytesWritten, totalBytesExpectedToDownload: totalBytesExpectedToWrite)
+    }
 }

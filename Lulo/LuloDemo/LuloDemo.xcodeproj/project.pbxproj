@@ -14,6 +14,8 @@
 		2F68E45E2985B4A900B788FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F68E45D2985B4A900B788FC /* Assets.xcassets */; };
 		2F68E4612985B4A900B788FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F68E45F2985B4A900B788FC /* LaunchScreen.storyboard */; };
 		2F68E46C2985B7C200B788FC /* Lulo in Frameworks */ = {isa = PBXBuildFile; productRef = 2F68E46B2985B7C200B788FC /* Lulo */; };
+		2F7D71E3299859F900734BB8 /* ProgresExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7D71E1299859F900734BB8 /* ProgresExampleViewController.swift */; };
+		2F7D71E4299859F900734BB8 /* ProgresExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7D71E2299859F900734BB8 /* ProgresExampleViewController.xib */; };
 		2F9BB435299067F200A76EC3 /* BasicExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BB433299067F200A76EC3 /* BasicExampleViewController.swift */; };
 		2F9BB436299067F200A76EC3 /* BasicExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F9BB434299067F200A76EC3 /* BasicExampleViewController.xib */; };
 		2F9BB43F29906AFC00A76EC3 /* ExampleOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F9BB43D29906AFC00A76EC3 /* ExampleOptionTableViewCell.swift */; };
@@ -30,6 +32,8 @@
 		2F68E4602985B4A900B788FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F68E4622985B4A900B788FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F68E4692985B55400B788FC /* Lulo */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Lulo; path = ..; sourceTree = "<group>"; };
+		2F7D71E1299859F900734BB8 /* ProgresExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgresExampleViewController.swift; sourceTree = "<group>"; };
+		2F7D71E2299859F900734BB8 /* ProgresExampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgresExampleViewController.xib; sourceTree = "<group>"; };
 		2F9BB433299067F200A76EC3 /* BasicExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExampleViewController.swift; sourceTree = "<group>"; };
 		2F9BB434299067F200A76EC3 /* BasicExampleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BasicExampleViewController.xib; sourceTree = "<group>"; };
 		2F9BB43D29906AFC00A76EC3 /* ExampleOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleOptionTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,11 +99,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2F9BB432299067D300A76EC3 /* Examples */ = {
+		2F7D71DF299856EA00734BB8 /* Basic */ = {
 			isa = PBXGroup;
 			children = (
 				2F9BB433299067F200A76EC3 /* BasicExampleViewController.swift */,
 				2F9BB434299067F200A76EC3 /* BasicExampleViewController.xib */,
+			);
+			path = Basic;
+			sourceTree = "<group>";
+		};
+		2F7D71E0299856F300734BB8 /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				2F7D71E1299859F900734BB8 /* ProgresExampleViewController.swift */,
+				2F7D71E2299859F900734BB8 /* ProgresExampleViewController.xib */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		2F9BB432299067D300A76EC3 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				2F7D71E0299856F300734BB8 /* Progress */,
+				2F7D71DF299856EA00734BB8 /* Basic */,
 			);
 			path = Examples;
 			sourceTree = "<group>";
@@ -186,6 +208,7 @@
 			files = (
 				2F9BB436299067F200A76EC3 /* BasicExampleViewController.xib in Resources */,
 				2F68E4612985B4A900B788FC /* LaunchScreen.storyboard in Resources */,
+				2F7D71E4299859F900734BB8 /* ProgresExampleViewController.xib in Resources */,
 				2F68E45E2985B4A900B788FC /* Assets.xcassets in Resources */,
 				2F68E45C2985B4A900B788FC /* Main.storyboard in Resources */,
 				2F9BB44029906AFC00A76EC3 /* ExampleOptionTableViewCell.xib in Resources */,
@@ -201,6 +224,7 @@
 			files = (
 				2F9BB43F29906AFC00A76EC3 /* ExampleOptionTableViewCell.swift in Sources */,
 				2F9BB435299067F200A76EC3 /* BasicExampleViewController.swift in Sources */,
+				2F7D71E3299859F900734BB8 /* ProgresExampleViewController.swift in Sources */,
 				2F68E4592985B4A900B788FC /* ViewController.swift in Sources */,
 				2F68E4552985B4A900B788FC /* AppDelegate.swift in Sources */,
 				2F68E4572985B4A900B788FC /* SceneDelegate.swift in Sources */,
